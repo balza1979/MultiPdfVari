@@ -149,7 +149,6 @@ fetch("elenco.json")
       const encodedName = encodeURIComponent(pdf);
       const encodedFolder = encodeURIComponent(cartella);
 
-      // percorso RELATIVO universale
       const directUrl = `pdf/${encodedFolder}/${encodedName}`;
 
       const gviewUrl = `https://docs.google.com/gview?embedded=1&url=${window.location.origin}/${directUrl}`;
@@ -176,7 +175,10 @@ function openFast(url) {
 
 function openSafe(directUrl, gviewUrl) {
 
-  const newTab = window.open(window.location.href.replace(/[^/]+$/, "") + "loading.html", "_blank");
+  // 🔥 URL ASSOLUTO AUTOMATICO PER loading.html
+  const base = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "/");
+  const newTab = window.open(base + "loading.html", "_blank");
+
   if (!newTab) return;
 
   showLoading(true, "Caricamento del documento...", "Attendere qualche secondo");
