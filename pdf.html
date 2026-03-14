@@ -151,8 +151,9 @@ fetch("elenco.json")
 
       const directUrl = `pdf/${encodedFolder}/${encodedName}`;
 
-      const gviewUrl = `https://docs.google.com/gview?embedded=1&url=${window.location.origin}/${directUrl}`;
-
+      const gviewUrl =
+  `https://drive.google.com/viewerng/viewer?embedded=1&url=` +
+  encodeURIComponent(`${window.location.origin}/${directUrl}`);
       const card = document.createElement("div");
       card.className = "card";
 
