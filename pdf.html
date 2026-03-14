@@ -176,8 +176,7 @@ function openFast(url) {
 
 function openSafe(directUrl, gviewUrl) {
 
-  const newTab = window.open("loading.html", "_blank");
-
+  const newTab = window.open(window.location.href.replace(/[^/]+$/, "") + "loading.html", "_blank");
   if (!newTab) return;
 
   showLoading(true, "Caricamento del documento...", "Attendere qualche secondo");
